@@ -11,16 +11,24 @@
 #                     1 - (Enabled)
 #
 
-Skip.Deathknight.Starter.Announce.enable = 1
+Skip.Deathknight.Starter.Announce.enable = 0
 
 #
 #    Skip.DeathKnight.Starter.Enable
-#         Active Module for all new accounts regardless of account level. Instant Skip on DK Creation.
+#         Active Module for all new accounts regardless of account level.
 #         Default:    0 - (Disabled)
 #                     1 - (Enabled)
 #
 
 Skip.Deathknight.Starter.Enable = 1
+
+#
+#    Skip.Deathknight.Optional.Enable
+#    Enables optional to skip when talking to lich king on first creation of dk.
+#    Default: 1 - (Active)
+#
+
+Skip.Deathknight.Optional.Enable = 1
 
 #
 #    GM.Skip.Deathknight.Starter.Enable
@@ -48,14 +56,6 @@ Skip.Deathknight.Start.Level = 58
 #
 
 Skip.Deathknight.Start.Trained = 1
-
-#
-#    Skip.Deathknight.Optional.Enable
-#    Enables optional to skip when talking to lich king on first creation of dk.
-#    Default: 1 - (Active)
-#
-
-Skip.Deathknight.Optional.Enable = 1
 
 #
 #    DeleteGold.Deathknight.Optional.Enable

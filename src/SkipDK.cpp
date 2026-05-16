@@ -130,18 +130,25 @@ void Azerothcore_skip_deathknight_HandleSkip(Player* player)
     //Don't need to save all players, just current
     player->SaveToDB(false, false);
 
-    WorldLocation Aloc = WorldLocation(0, -8866.55f, 671.39f, 97.90f, 5.27f);// Stormwind
-    WorldLocation Hloc = WorldLocation(1, 1637.62f, -4440.22f, 15.78f, 2.42f);// Orgrimmar
+    //WorldLocation Aloc = WorldLocation(0, -8866.55f, 671.39f, 97.90f, 5.27f);// Stormwind
+    //WorldLocation Hloc = WorldLocation(1, 1637.62f, -4440.22f, 15.78f, 2.42f);// Orgrimmar
+
+    WorldLocation Aloc = WorldLocation(MAP_NORTHREND, 2787.87f, -2732.06f, 89.67f, 0.41f); // Mall (Grizzly Hills - Voldrune)
+    WorldLocation Hloc = WorldLocation(MAP_NORTHREND, 2787.87f, -2732.06f, 89.67f, 0.41f); // Mall (Grizzly Hills - Voldrune)
 
     if (player->GetTeamId() == TEAM_ALLIANCE)
     {
-        player->TeleportTo(0, -8833.37f, 628.62f, 94.00f, 1.06f);//Stormwind
-        player->SetHomebind(Aloc, 1637);// Stormwind Homebind location
+        //player->TeleportTo(0, -8833.37f, 628.62f, 94.00f, 1.06f);//Stormwind
+        player->TeleportTo(MAP_NORTHREND, 2787.87f, -2732.06f, 89.67f, 0.41f); // Mall (Grizzly Hills - Voldrune)
+        //player->SetHomebind(Aloc, 1637);// Stormwind Homebind location
+        player->SetHomebind(Aloc, AREA_GRIZZLY_HILLS); // Mall
     }
     else
     {
-        player->TeleportTo(1, 1569.59f, -4397.63f, 7.70f, 0.54f);//Orgrimmar
-        player->SetHomebind(Hloc, 1653);// Orgrimmar Homebind location
+        //player->TeleportTo(1, 1569.59f, -4397.63f, 7.70f, 0.54f);//Orgrimmar
+        player->TeleportTo(MAP_NORTHREND, 2787.87f, -2732.06f, 89.67f, 0.41f); // Mall
+        //player->SetHomebind(Hloc, 1653);// Orgrimmar Homebind location
+        player->SetHomebind(Hloc, AREA_GRIZZLY_HILLS); // Mall
     }
 
     if (sConfigMgr->GetOption<bool>("DeleteGold.Deathknight.Optional.Enable", true))
@@ -180,7 +187,10 @@ public:
             if ((sConfigMgr->GetOption<bool>("Skip.Deathknight.Starter.Enable", true) && player->GetSession()->GetSecurity() == SEC_PLAYER)
                 || (sConfigMgr->GetOption<bool>("GM.Skip.Deathknight.Starter.Enable", true) && player->GetSession()->GetSecurity() >= SEC_MODERATOR))
             {
-                Azerothcore_skip_deathknight_HandleSkip(player);
+                if (!sConfigMgr->GetOption<bool>("Skip.Deathknight.Optional.Enable", false))
+                {
+                    Azerothcore_skip_deathknight_HandleSkip(player);
+                }
             }
         }
     }
